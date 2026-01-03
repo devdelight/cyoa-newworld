@@ -1,0 +1,317 @@
+/* fonts */
+/* 
+사용 예정인 폰트
+
+https://noonnu.cc/font_page/372 (정선아리랑체)
+https://noonnu.cc/font_page/1091 (HS봄바람체 2.1)
+https://noonnu.cc/font_page/210 (116수박화체)
+
+ */
+
+@font-face {
+    font-family: 'Aggravo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aggravo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroM.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aggravo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HsBombaram21';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/HSBombaram21-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* noscript */
+@keyframes no-title-y-keyframes
+{
+    0% {
+        translate: 0 -1rem;
+    }
+    100% {
+        translate: 0 1rem;
+    }
+}
+
+@keyframes no-title-rot-keyframes
+{
+    0% { rotate: -15deg; }
+    100% { rotate: 15deg; }
+}
+
+.no-title {
+    width: inherit;
+    height: 6rem;
+
+    /* background-color: gray; */
+
+    text-align: center;
+    align-content: center;
+}
+
+.no-title > *
+{
+    display: inline-block;
+
+    font-family: Aggravo;
+    font-weight: 700;
+    font-size: 2rem;
+
+    /* default animation */
+    animation:
+        no-title-y-keyframes 3s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate, no-title-rot-keyframes 3s ease-in-out infinite alternate;
+
+    /* animation-name: no-title-y-keyframes;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); */
+}
+
+.no-title > :first-child
+{
+    animation-duration: 4.47s;
+    animation-delay: -1720ms;
+}
+
+.no-title > :nth-child(2)
+{
+    animation-duration: 4.11s;
+    animation-delay: -4440ms;
+}
+
+.no-title > :nth-child(3)
+{
+    animation-duration: 3.95s;
+    animation-delay: -1660ms;
+}
+
+.no-title > :nth-child(4)
+{
+    animation-duration: 4.24s;
+    animation-delay: -1790ms;
+}
+
+.no-subtitle
+{
+    width: inherit;
+
+    font-family: GMarketSans;
+
+    text-align: center;
+    align-content: center;
+}
+
+.no-subtitle a
+{
+    color: white;
+    text-decoration: none;
+}
+
+/* Basic CSS */
+
+.no-animation
+{
+    transition: none !important;
+    animation: none !important;
+}
+
+*, *::before, *::after
+{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* CYOA layout */
+/* 
+ body 밑에 있는 cyoa-layout이 배경과 dialogue 등이 모두 출력되는 베이스
+*/
+
+body {
+    display: flex;
+
+    margin: 0;
+    padding: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+#cyoa
+{
+    display: flex;
+
+    gap: 2rem;
+
+    /* background-color: darkolivegreen; */
+}
+
+#cyoa-layout
+{
+    margin: 0;
+    padding: 0;
+
+    width: 60vw;
+    height: 80vh;
+
+    background-color: darkslategrey;
+}
+
+/* CYOA Panel */
+#cyoa-panel
+{
+    margin: 0;
+    padding: 4px;
+
+    width: 20vw;
+    height: 80vh;
+
+    background-color: darkgoldenrod;
+}
+
+.cyoa-panel-table
+{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.cyoa-panel-table td
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Digit Counter CSS */
+.counter-container
+{
+    font-variant-numeric: slashed-zero;
+
+    display: flex;
+    font-weight: bold;
+    /*
+        lh는 line height의 준말로 최신 css 단위, 말 그대로 일반 글 한 줄의 세로 길이이다.
+        그래서 counter-container의 font-size를 바꾸면 그걸 반영하여 1lh도 바뀐다.
+    */
+    height: 1lh;
+    overflow: hidden; /* 영역 밖 숫자는 숨김 */
+    text-align: center;
+}
+
+.digit-wrapper {
+    width: 1ch;
+    height: 100%;
+}
+
+.digit-strip {
+    display: flex;
+    flex-direction: column;
+    transition: transform 1.4s ease-out; /* 부드러운 가속도 */
+}
+
+/* DarkTheme */
+@media (prefers-color-scheme: dark)
+{
+    body
+    {
+        background-color: #121212;
+        color: white;
+    }
+}
+
+/* Mobile (세로모드) */
+@media (max-width: 480px) and (orientation: portrait)
+{
+    .no-title {
+       height: 12rem;
+    }
+
+    .no-title > *
+    {
+        font-weight: 500;
+        font-size: 4rem;
+    }
+
+    #cyoa
+    {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+
+    #cyoa-layout
+    {
+        width: 90vw;
+        height: 70vh;
+
+        background-color: darkslategrey;
+    }
+
+    #cyoa-panel
+    {
+        width: 90vw;
+        height: 10vh;
+
+        background-color: darkgoldenrod;
+    }
+}
+
+/* 가로보기 */
+@media (max-height: 430px) and (orientation: landscape)
+{
+    .no-title {
+       height: 12rem;
+    }
+
+    .no-title > *
+    {
+        font-weight: 500;
+        font-size: 4rem;
+    }
+
+    #cyoa
+    {
+        flex-direction: row-reverse;
+        gap: 1rem;
+    }
+}

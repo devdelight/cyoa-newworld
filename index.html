@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="Description" content="신세계 CYOA"> -->
+    <title>New World - CYOA</title>
+    <link rel="stylesheet" href="./styles/default.css">
+</head>
+
+<body>
+    <!-- 자바스크립트가 실행되지 않았을 시 -->
+    <noscript>
+        <div class="no-title">
+            <span>입</span>
+            <span>장</span>
+            <span>불</span>
+            <span>허</span>
+        </div>
+        <div class="no-subtitle">본 웹사이트는 javascript를 기반으로 한 <a href="https://arca.live/b/cyoa/118181336">CYOA</a> 게임 구동을 위해 구축되었으며<br>이에 따라 javascript를 사용할 수 없는 환경에서는 입장하실 수 없습니다.</div>
+        <div class="no-subtitle" style="font-size: smaller;">라고 존나 간지나는 오류 페이지를 만들고 싶었는데 요즘 시대에는 이거 보일 일이 없을 거 같네요. 시간만 낭비했습니다.</div>
+    </noscript>
+
+    <!-- main -->
+    <div id="cyoa">
+        <div id="cyoa-layout">
+            <div id="cyoa-layout-background"></div>
+            <div id="cyoa-layout-profile"></div>
+            <div id="cyoa-layout-itemview"></div>
+            <div id="cyoa-layout-dialogue"></div>
+        </div>
+        <!-- panel에서 자원(마력, 순수한 마력, 관리자 권한), 스탯(근력, 민첩, 지능, 지혜, 건강, 매력, 행운 등), 아이템, 외형 확인 가능 -->
+        <div id="cyoa-panel">
+            <!-- 자원 칸 -->
+            <div id="cyoa-panel-resources">
+                <b>자원</b>
+                <table class="cyoa-panel-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div>마력</div>
+                                <digit>0</digit>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>순수한 마력</div>
+                                <digit>0</digit>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
