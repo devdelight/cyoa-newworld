@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta name="Description" content="신세계 CYOA"> -->
-    <title>New World - CYOA</title>
+    <title>신세계</title>
     <link rel="stylesheet" href="./styles/default.css">
 </head>
 
@@ -32,30 +32,113 @@
         </div>
         <!-- panel에서 자원(마력, 순수한 마력, 관리자 권한), 스탯(근력, 민첩, 지능, 지혜, 건강, 매력, 행운 등), 아이템, 외형 확인 가능 -->
         <div id="cyoa-panel">
-            <!-- 자원 칸 -->
-            <div id="cyoa-panel-resources">
-                <b>자원</b>
-                <table class="cyoa-panel-table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>마력</div>
-                                <digit>0</digit>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>순수한 마력</div>
-                                <digit>0</digit>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- cyoa-panel-slidable은 모바일 환경에서 슬라이드를 인식하는 기능 -->
+            <div id="cyoa-panel-slidable">
+                <!-- 자원 칸 -->
+                <div id="cyoa-panel-resources">
+                    <b class="cyoa-panel-label">자원</b>
+                    <table class="cyoa-panel-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>마력</div>
+                                    <digit>0</digit>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>순수한 마력</div>
+                                    <digit>0</digit>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 모바일 일때는 이 원들이 현재 위치를 알려줌 -->
+                <div id="cyoa-panel-mobile-slide-ui">
+                    <div id="cyoa-panel-mobile-slide-dots-ui">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+
+                <!-- 모바일(세로) 에서는 이 아래로 다 자르고 스크롤하여 볼 수 있게 -->
+                <br id="cyoa-panel-mobile-cutline">
+
+                <!-- 능력치 -->
+                <div id="cyoa-panel-stats">
+                    <b class="cyoa-panel-label">능력치</b>
+                    <table class="cyoa-panel-table">
+                        <tbody>
+                            <!-- 데스크탑이냐 폰 가로이냐에 따라 배치 다르게 -->
+                            <!-- <tr>
+                                <td>
+                                    <div>근력</div>
+                                    <digit>0</digit>
+                                </td>
+                                <td>
+                                    <div>지능</div>
+                                    <digit>0</digit>
+                                </td>
+                                <td>
+                                    <div>건강</div>
+                                    <digit>0</digit>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>민첩</div>
+                                    <digit>0</digit>
+                                </td>
+                                <td>
+                                    <div>지혜</div>
+                                    <digit>0</digit>
+                                </td>
+                                <td>
+                                    <div>매력</div>
+                                    <digit>0</digit>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>명성</div>
+                                    <digit>0</digit>
+                                </td>
+                                <td>
+                                    <div>행운</div>
+                                    <digit>0</digit>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
+    <script>
+        let resizeTimer = null;
+
+        const MEDIA_MOBILE_PORTRAIT = window.matchMedia("(max-width: 480px) and (orientation: portrait)");
+        const MEDIA_MOBILE_LANDSCAPE = window.matchMedia("(max-height: 430px) and (orientation: landscape)");
+
+        window.addEventListener("resize", e =>
+        {
+            if (window.cyoa == null || window.cyoa == undefined)
+                return;
+
+            clearTimeout(resizeTimer);
+
+            resizeTimer = setTimeout(() =>
+            {
+                const device = (MEDIA_MOBILE_LANDSCAPE.matches ? "mobile-landscape" : (MEDIA_MOBILE_PORTRAIT.matches ? "mobile-portrait" : "desktop"));
+                window.cyoa.onResize(device);
+                console.log(device);
+            }, 100);
+        });
+    </script>
 </body>
 
 </html>

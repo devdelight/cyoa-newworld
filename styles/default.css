@@ -202,12 +202,24 @@ body {
 #cyoa-panel
 {
     margin: 0;
-    padding: 4px;
+    padding: 0;
 
     width: 20vw;
     height: 80vh;
 
+    overflow: hidden;
+
     background-color: darkgoldenrod;
+}
+
+#cyoa-panel-slidable
+{
+    padding: 8px;
+}
+
+.cyoa-panel-label
+{
+    
 }
 
 .cyoa-panel-table
@@ -217,10 +229,43 @@ body {
     border-collapse: collapse;
 }
 
+.cyoa-panel-table tr
+{
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+}
+
 .cyoa-panel-table td
 {
+    width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+/* Mobile Slide Dots */
+#cyoa-panel-mobile-slide-ui
+{
+    display: none;
+
+    position: sticky;
+}
+
+#cyoa-panel-mobile-slide-dots-ui
+{
+    display: flex;
+    gap: 0.2rem;
+    justify-content: center;
+}
+
+#cyoa-panel-mobile-slide-dots-ui .dot
+{
+    width: 0.5rem;
+    height: 0.5rem;
+
+    border-radius: 50%;
+
+    background-color: rgba(229, 249, 255, 0.67);
 }
 
 /* Digit Counter CSS */
@@ -261,7 +306,7 @@ body {
 }
 
 /* Mobile (세로모드) */
-@media (max-width: 480px) and (orientation: portrait)
+@media (max-width: 520px) and (orientation: portrait)
 {
     .no-title {
        height: 12rem;
@@ -290,9 +335,38 @@ body {
     #cyoa-panel
     {
         width: 90vw;
-        height: 10vh;
+        height: 12vh;
 
         background-color: darkgoldenrod;
+    }
+    
+    #cyoa-panel-slidable
+    {
+        display: flex;
+
+        width: 300%;
+        height: 300%;
+
+        padding: 0;
+    }
+
+    #cyoa-panel-slidable > div
+    {
+        flex: 1;
+
+        padding: 12px;
+    }
+
+    #cyoa-panel-mobile-slide-ui
+    {
+        display: block;
+        position: absolute;
+
+        padding: 0 !important;
+
+        bottom: 0;
+
+        width: 100%;
     }
 }
 
